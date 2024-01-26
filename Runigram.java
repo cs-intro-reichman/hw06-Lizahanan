@@ -197,7 +197,7 @@ public class Runigram {
 		for (int i = 0; i<=n;i++){
 			double alpha = (double)((double)(n-i)/(double)n); // calcualtes alpha as a double (casting)
 			morph = blend(source, scaledTarget,alpha);
-			setCanvas(morph); // creates canvas for given image
+			//setCanvas(morph); // creates canvas for given image
 			display(morph); //displays given image
 			StdDraw.pause(500); // pauses for 500 milliseconds
 
