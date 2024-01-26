@@ -152,16 +152,11 @@ public class Runigram {
 	 * values in the two input color.
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) {
-		int r1 = c1.getRed();
-		int b1 = c1.getBlue();
-		int g1 = c1.getGreen();
-		int r2 = c2.getRed();
-		int b2 = c2.getBlue();
-		int g2 = c2.getGreen();
-
-		int red = (int)((alpha * r1) + ((1-alpha) * r2));
-		int blue = (int)((alpha * b1) + ((1-alpha) * b2));
-		int green = (int)((alpha * g1) + ((1-alpha) * g2));
+		
+		
+		int red = (int)((alpha *c1.getRed() ) + ((1-alpha) * c2.getRed()));
+		int blue = (int)((alpha * c1.getBlue()) + ((1-alpha) * c2.getBlue()));
+		int green = (int)((alpha * c1.getGreen()) + ((1-alpha) * c2.getGreen()));
 
 		Color blend = new Color(red, blue, green);
 
@@ -195,9 +190,8 @@ public class Runigram {
 		Color [][] morph = new Color [source.length][source[0].length];
 		Color [][] scaledTarget = scaled(target, source.length, source[0].length);
 		for (int i = 0; i<=n;i++){
-			double alpha = (double)((double)(n-i)/(double)n); // calcualtes alpha as a double (casting)
+			double alpha = (n-i)/n; // calcualtes alpha as a double (casting)
 			morph = blend(source, scaledTarget,alpha);
-			//setCanvas(morph); // creates canvas for given image
 			display(morph); //displays given image
 			StdDraw.pause(500); // pauses for 500 milliseconds
 
