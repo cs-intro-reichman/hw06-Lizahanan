@@ -11,16 +11,23 @@ public class Runigram {
 		
 		// Tests the reading and printing of an image:	
 		Color[][] tinypic = read("tinypic.ppm");
-		print(tinypic);
-
+		Color[][] thor = read("thor.ppm");
+		//print(tinypic);
+		//print(thor);
+		
+	
 		// Creates an image which will be the result of various 
 		// image processing operations:
 		Color[][] imageOut;
 
 		// Tests the horizontal flipping of an image:
-		imageOut = flippedHorizontally(tinypic);
-		System.out.println();
-		print(imageOut);
+		//imageOut = flippedHorizontally(tinypic);
+		// Tests the vertical flipping of an image:
+		//imageOut = flippedVertically(tinypic);
+		//imageOut = scaled(tinypic, 3, 5);
+		morph(thor, tinypic, 10);
+		//System.out.println();
+		//print(imageOut);
 		
 		
 	}
@@ -114,7 +121,6 @@ public class Runigram {
 		int lum = (int)(r + g + b);
 		Color luminance = new Color (lum,lum,lum);
 		return luminance;
-	}
 	}
 	
 	/**
