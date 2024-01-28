@@ -165,7 +165,7 @@ public class Runigram {
 		int blue = (int)((alpha * c1.getBlue()) + ((1-alpha) * c2.getBlue()));
 		int green = (int)((alpha * c1.getGreen()) + ((1-alpha) * c2.getGreen()));
 
-		Color blend = new Color(red, blue, green);
+		Color blend = new Color(red, green, blue);
 
 
 		return blend;
