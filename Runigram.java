@@ -115,6 +115,7 @@ public class Runigram {
 		Color luminance = new Color (lum,lum,lum);
 		return luminance;
 	}
+	}
 	
 	/**
 	 * Returns an image which is the grayscaled version of the given image.
@@ -134,8 +135,8 @@ public class Runigram {
 	 * The image is scaled (resized) to have the given width and height.
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
-		double H = (double)(image.length/height);
-		double W = (double)(image[0].length/width);
+		double H = (image.length/(double)height);
+		double W = (image[0].length/(double)width);
 		Color [][] scaledImage = new Color[height][width];
 		for (int i = 0; i < height; i++){
 			for (int j = 0; j< width; j++){
@@ -188,9 +189,12 @@ public class Runigram {
 	 */
 	public static void morph(Color[][] source, Color[][] target, int n) {
 		Color [][] morph = new Color [source.length][source[0].length];
-		Color [][] scaledTarget = scaled(target, source.length, source[0].length);
+		Color [][] scaledTarget = target;
+		if(source.length != target.length || source[0].length!=target[0].length){
+			scaledTarget = scaled(target, source[0].length, source.length);
+		}
 		for (int i = 0; i<=n;i++){
-			double alpha = (n-i)/n; // calcualtes alpha as a double (casting)
+			double alpha = (n-i)/(double)n; // calcualtes alpha as a double (casting)
 			morph = blend(source, scaledTarget,alpha);
 			display(morph); //displays given image
 			StdDraw.pause(500); // pauses for 500 milliseconds
